@@ -15,7 +15,6 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """
         Initialize a new BaseModel.
-
         Args:
             *args (any): Unused.
             **kwargs (dict): Key/value pairs of attributes.
@@ -26,7 +25,7 @@ class BaseModel:
         if len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
-                    self.__dict__[key] = datetime.fromisoformat(value)
+                    self.__dict__[key] = datetime.now()
                 else:
                     self.__dict__[key] = value
         else:
@@ -40,8 +39,8 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Return the dictionary of the BaseModel instance.
-
+        """
+        Return the dictionary of the BaseModel instance.
         Includes the key/value pair __class__ representing
         the class name of the object.
         """
@@ -52,6 +51,8 @@ class BaseModel:
         return obj_dict
 
     def __str__(self):
-        """Return the print/str representation of the BaseModel instance."""
+        """
+        Return the print/str representation of the BaseModel instance.
+        """
         classname = self.__class__.__name__
         return "[{}] ({}) {}".format(classname, self.id, self.__dict__)
