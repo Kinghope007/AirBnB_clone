@@ -1,9 +1,8 @@
-''' User module class '''
 #!/usr/bin/python3
+from models.base_model import BaseModel
 '''
 Module for user class
 '''
-from models.base_model import BaseModel
 
 
 class User(BaseModel):
